@@ -1,42 +1,45 @@
 import java.io.Console;
+import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args){
-        Console console = System.console();
+    public static void main(String[] args) {
+        Console myConsole = System.console();
+        Scanner myScanner = new Scanner(System.in);
 
-        int responseInt = 0;
-        boolean invalid = responseInt!=1 || responseInt!=2;
+        boolean runProgram = true;
 
-        while (invalid){
-            System.out.println("\nWelcome to the Ceaser Cipher App. \n\nEnter 1 to encrypt or 2 to decrypt?");
-            String response = console.readLine();
-            responseInt = Integer.parseInt(response);
-            switch (responseInt){
-                case 1:
-                    System.out.println("Enter the sentence you want to encrypt");
-                    String inStr = console.readLine();
-                    System.out.println("Enter the key to use to encrypt");
-                    String keyString = console.readLine();
-                    int key = Integer.parseInt(keyString);
-                    Encrypter encrypter = new Encrypter();
-                    String encrypted = encrypter.encrypt(inStr,key);
-                    System.out.println("The encrypted text is:\n"+encrypted);
-                    break;
+        while (runProgram) {
+            System.out.println("Welcome to a Caesar Ciphar program. Would you like to encrypt or decrypt a statement or would you like to exit?");
+            String userAnswer = myConsole.readLine();
 
-                case 2:
-                    System.out.println("Enter the sentence you want to decrypt");
-                    String inStr2 = console.readLine();
-                    System.out.println("Enter the key to use to decrypt");
-                    String keyString2 = console.readLine();
-                    int key2 = Integer.parseInt(keyString2);
-                    Decrypter decrypter = new Decrypter();
-                    String decrypted = decrypter.decrypt(inStr2,key2);
-                    System.out.println("The decrypted text is:\n"+decrypted);
-                    break;
 
-                default:
-                    System.out.println("invalid choice.choose between 1 for encrypt and 2 for decrypt");
-                    break;
+            if (userAnswer.equals("encrypt")) {
+                System.out.println("Please enter a statement that you would like to encrypt:");
+                String statement = myConsole.readLine();
+
+                System.out.println("Please enter an encryption key");
+                int key = myScanner.nextInt();
+
+                CaesarCipher userEncryption = new CaesarCipher(statement, key);
+                String encryption = userEncryption.isActuallyEncrypted(statement, key);
+
+                System.out.println("The encrypted statement is: " + encryption);
+            } else if (userAnswer.equals("decrypt")) {
+                System.out.println("Please enter a statement to decrypt: ");
+                String statementDecrypt = myConsole.readLine();
+
+                System.out.println("Please enter an decryption key");
+                int keyDecrypt = myScanner.nextInt();
+
+                CaesarCipher userDecryption = new CaesarCipher(statementDecrypt, keyDecrypt);
+                String decryption = userDecryption.toDecrypt(statementDecrypt, keyDecrypt);
+
+                System.out.println("The decrypted statement is: " + decryption);
+            } else if (userAnswer.equals("exit")){
+                runProgram = false;
+            }
+            else {
+                System.out.println("Sorry we could not recognise your input");
             }
         }
     }
