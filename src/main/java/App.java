@@ -35,7 +35,7 @@ public class App {
                     break;
 
                 default:
-                    System.out.println("You entered an invalid choice. Please choose between 1 for encrypt and 2 for decrypt");
+                    System.out.println("invalid choice.choose between 1 for encrypt and 2 for decrypt");
                     break;
             }
         }
