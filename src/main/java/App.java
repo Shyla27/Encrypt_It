@@ -9,7 +9,8 @@ public class App {
         boolean runProgram = true;
 
         while (runProgram) {
-            System.out.println("\nWelcome to EncryptIt. \n\nWould you like to encrypt or decrypt a statement or would you like to exit?");
+            System.out.println("Welcome to EncryptIt!! ");
+            System.out.println("Would you like to encrypt or decrypt a statement?");
             String userAnswer = myConsole.readLine();
 
 
