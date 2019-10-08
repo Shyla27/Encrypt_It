@@ -9,7 +9,7 @@ public class App {
         boolean runProgram = true;
 
         while (runProgram) {
-            System.out.println("Welcome to a Caesar Ciphar program. Would you like to encrypt or decrypt a statement or would you like to exit?");
+            System.out.println("\nWelcome to EncryptIt. \n\nWould you like to encrypt or decrypt a statement or would you like to exit?");
             String userAnswer = myConsole.readLine();
 
 
@@ -23,7 +23,7 @@ public class App {
                 CaesarCipher userEncryption = new CaesarCipher(statement, key);
                 String encryption = userEncryption.isActuallyEncrypted(statement, key);
 
-                System.out.println("The encrypted statement is: " + encryption);
+                System.out.println("The encrypted statement is: \n" + encryption);
             } else if (userAnswer.equals("decrypt")) {
                 System.out.println("Please enter a statement to decrypt: ");
                 String statementDecrypt = myConsole.readLine();
@@ -34,7 +34,7 @@ public class App {
                 CaesarCipher userDecryption = new CaesarCipher(statementDecrypt, keyDecrypt);
                 String decryption = userDecryption.toDecrypt(statementDecrypt, keyDecrypt);
 
-                System.out.println("The decrypted statement is: " + decryption);
+                System.out.println("The decrypted statement is: \n" + decryption);
             } else if (userAnswer.equals("exit")){
                 runProgram = false;
             }
