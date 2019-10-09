@@ -58,4 +58,10 @@ public class CaesarCipherTest{
         CaesarCipher testCaesarCipher = new CaesarCipher("ab",2);
         assertEquals("yz",testCaesarCipher.toDecrypt("ab",2));
     }
+
+    @Test 
+    public void newCaesarCipher_decryptAStringUsingAKey_rfe(){
+        CaesarCipher testCaesarCipher = new CeaserCipher("ds", 2);
+        assertEquals("fef", testCaesarCipher.toDecrypt(ds, 3) )
+    }
 }
